@@ -23,6 +23,12 @@ namespace Bookstore.Migrations
                 {
                     table.PrimaryKey("PK_users", x => x.Id);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_users_Email",
+                table: "users",
+                column: "Email",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
