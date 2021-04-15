@@ -1,6 +1,7 @@
 ﻿using Bookstore.Core.Entities;
 using Bookstore.Infrastructure.Data;
 using Bookstore.Infrastructure.Repository.Interface;
+using System.Linq;
 
 namespace Bookstore.Infrastructure.Repository
 {
@@ -12,6 +13,11 @@ namespace Bookstore.Infrastructure.Repository
         }
 
         private readonly BookstoreContext _context;
+
+        public User GetUserByEmail(string email)
+        {
+            return _context.Users.FirstOrDefault(u => u.Email.ToLower().Equals(email.ToLower()));
+        }
 
         public User Create(User user)
         {
