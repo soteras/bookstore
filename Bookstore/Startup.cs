@@ -1,4 +1,8 @@
 using Bookstore.Infrastructure.Data;
+using Bookstore.Infrastructure.Repository;
+using Bookstore.Infrastructure.Repository.Interface;
+using Bookstore.Services;
+using Bookstore.Services.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -34,6 +38,12 @@ namespace Bookstore
             services.AddControllers().AddNewtonsoftJson(options =>
                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             );
+
+            // Repository
+            services.AddScoped<IUserRepository, UserRepository>();
+
+            // Service
+            services.AddScoped<ISignupService, SignupService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
