@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Bookstore.Core.Entities;
+using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace Bookstore.Infrastructure.Data
@@ -12,5 +13,7 @@ namespace Bookstore.Infrastructure.Data
             base.OnModelCreating(builder);
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
+
+        public DbSet<User> Users { get; set; }
     }
 }
